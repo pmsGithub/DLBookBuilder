@@ -29,24 +29,30 @@ struct ContentView: View {
             .padding()
         } detail: {
             HSplitView {
-                VStack {
-                    Spacer()
-                    Text("Left")
-                    TextField("Enter English plaintext filepath here…", text: $eFileContent, onCommit: {})
-                        .disableAutocorrection(true)
-                        .padding()
-                        .background(.red)
-                    Spacer()
+                ZStack {
+                    Rectangle().fill(Color.gray)
+                    VStack {
+                        Spacer()
+                        Text("Left")
+                        TextField("Enter English plaintext filepath here…", text: $eFileContent, onCommit: {})
+                            .disableAutocorrection(true)
+                            .padding()
+                            .background(.red)
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                VStack {
-                    Text("Right")
-                    TextField("Enter German plaintext filepath here…", text: $gFileContent, onCommit: {})
-                        .disableAutocorrection(true)
-                        .padding()
-                        .background(.blue)
+                ZStack {
+                    Rectangle().fill(Color.yellow)
+                    VStack {
+                        Text("Right")
+                        TextField("Enter German plaintext filepath here…", text: $gFileContent, onCommit: {})
+                            .disableAutocorrection(true)
+                            .padding()
+                            .background(.blue)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
     }
